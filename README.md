@@ -95,3 +95,8 @@ functions:
     events:
       - http: path
 ```
+
+## Setup with a cloud provider
+* [AWS](https://serverless.com/framework/docs/providers/aws/guide/quick-start/)
+* [Azure](https://serverless.com/framework/docs/providers/azure/guide/quick-start/)
+* [Google](https://serverless.com/framework/docs/providers/google/guide/services/)
