@@ -42,3 +42,56 @@ For a Node.js serverless environment you would need 3 files:
 * `serverless.yml`
 
 *Assuming you use the Serverless Framework.*
+
+### `package.json`
+
+```json
+{
+  "name": "google-node-simple-http-endpoint",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "serverless-google-cloudfunctions": "^1.1.0"
+  }
+}
+```
+
+### `index.js`
+
+```js
+'use strict';
+
+exports.http = (request, response) => {
+  response.status(200).send('Hello World!');
+};
+```
+
+### `serverless.yml`
+
+```yml
+service: node-simple-http-endpoint # NOTE: Don't put the word "google" in here
+
+provider:
+  name: google
+  stage: dev
+  runtime: nodejs8
+  region: us-central1
+  project: simple-http-app
+  credentials: ~/.gcloud/keyfile.json
+
+plugins:
+  - serverless-google-cloudfunctions
+
+package:
+  exclude:
+    - node_modules/**
+    - .gitignore
+    - .git/**
+
+functions:
+  helloWorld:
+    handler: http
+    events:
+      - http: path
+```
