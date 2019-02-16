@@ -23,4 +23,12 @@ No need to go through all the hoops of provisioning a server, or managing your s
 Spend more time coding and less time configuring your server.
 
 ### Disadvantages 
+#### Long running tasks
+Serverless functions, while asynchronous are traditionally designed for short-running tasks. For example, default timeouts for AWS Lambda functions are only 60 seconds. Even when you extend the execution time, costs can be prohibitively high due to the cost per execution, over cost per hour of a dedicated instance.
 
+This means by default long running tasks aren't well suited for serverless work, unless the individual steps of a workflow are separated into smaller, shorter running functions. This is also why serverless functions lend themselves well to state machines, which execute a number of individual tasks through a workflow depending on the result of previous states.
+
+#### Testing
+Traditionally tests are implemented at the integration and unit levels. Most test suites dockerize applications into a sanitized local testing sandbox. This is much more difficult with serverless functions since they can't be executed until they're deployed.
+
+Potential solutions to this problem is mocking out the serverless environment using plugins like `serverless-offline` to emulate a local unit testing sandbox. For integration tests serverless functions can simply be deployed to an internal facing staging environment, similarly to how serverless functions would be deployed to production.
