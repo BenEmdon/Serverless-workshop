@@ -1,7 +1,6 @@
 # Serverless Computing Workshop
 Intro to Serverless Computing workshop
 
-
 ## What is Serverless Computing?
 Serverless computing is a cloud computing execution model where the cloud provider (ex. AWS) runs the server and dynamically manages the allocation of machine resources.
 
@@ -31,3 +30,15 @@ This means by default long running tasks aren't well suited for serverless work,
 Traditionally tests are implemented at the integration and unit levels. Most test suites dockerize applications into a sanitized local testing sandbox. This is much more difficult with serverless functions since they can't be executed until they're deployed.
 
 Potential solutions to this problem is mocking out the serverless environment using plugins like `serverless-offline` to emulate a local unit testing sandbox. For integration tests serverless functions can simply be deployed to an internal facing staging environment, similarly to how serverless functions would be deployed to production.
+
+## What is the Serverless Framework
+
+
+
+## What does a serverless environment look like?
+For a Node.js serverless environment you would need 3 files:
+* `package.json` 
+* `index.js`
+* `serverless.yml`
+
+*Assuming you use the Serverless Framework.*
