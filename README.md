@@ -32,7 +32,11 @@ Traditionally tests are implemented at the integration and unit levels. Most tes
 Potential solutions to this problem is mocking out the serverless environment using plugins like `serverless-offline` to emulate a local unit testing sandbox. For integration tests serverless functions can simply be deployed to an internal facing staging environment, similarly to how serverless functions would be deployed to production.
 
 ## What is the Serverless Framework
+Technically we can deploy Google Cloud Functions/AWS Functions without any additional tooling, but to do this we would need to either manually define all event handlers, and their respective event types, then additionally update the code for *every* serverless function.
 
+As you might expect, doing this process manually is extremely time consuming and resource intensive. The Serverless Framework does all of this for you!
+
+The Serverless Framework handles everything from bundling & packaging & comipiling each function, removing/bundling dependencies, to actually deploying the functions. The idea of the framework is to abstract away all non-code related work around web infrastructure.
 
 
 ## What does a serverless environment look like?
@@ -100,3 +104,28 @@ functions:
 * [AWS](https://serverless.com/framework/docs/providers/aws/guide/quick-start/)
 * [Azure](https://serverless.com/framework/docs/providers/azure/guide/quick-start/)
 * [Google](https://serverless.com/framework/docs/providers/google/guide/services/)
+
+
+## Deploying to the cloud
+Once your Google Cloud Platform account & project are configured, deploying with serverless is as easy as:
+```
+[blaveaux serverless-hello-world]$ serverless deploy
+Serverless: Packaging service...
+Serverless: Excluding development dependencies...
+Serverless: Compiling function "helloWorld"...
+Serverless: Creating deployment...
+Serverless: Checking deployment create progress...
+Serverless: Uploading artifacts...
+Serverless: Artifacts successfully uploaded...
+Serverless: Updating deployment...
+Serverless: Checking deployment update progress...
+Service Information
+service: node-simple-http-endpoint
+project: probot-welcome-app
+stage: dev
+region: us-central1
+
+Deployed functions
+helloWorld
+  https://us-central1-probot-welcome-app.cloudfunctions.net/http
+```
