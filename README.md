@@ -4,7 +4,8 @@ Intro to Serverless Computing workshop
 ## What is Serverless Computing?
 Serverless computing is a cloud computing execution model where the cloud provider (ex. AWS) runs the server and dynamically manages the allocation of machine resources.
 
-So *'Serverless'* still has servers, it's just the servers aren't managed by the developer.
+So *'Serverless'* still has servers, it's just that the servers aren't managed by the developer.
+
 Pricing is based on actual resources consumed, instead of pre-purchased units of capacity. 
 
 You can think of Serverless computing as functions-as-a-service, since you are defining a function then paying for its number of executions and execution time.
